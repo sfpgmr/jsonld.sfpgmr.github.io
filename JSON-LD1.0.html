@@ -2020,7 +2020,7 @@ JSON-LDではさまざまな方法で可能である。
 <span class="secno">6.10 </span>コンテキスト内の<abbr title="Internationalized Resource Identifier">IRI</abbr>拡張            </h3>
 <p><em>このセクションは非規範的である。</em></p>
 <p>
-一般的に、通常の<abbr title="Internationalized Resource Identifier">IRI</abbr>拡張ルールは<abbr title="Internationalized Resource Identifier">IRI</abbr>として予想される(<a class="sectionRef sec-ref" href="#iris">section 5.2 IRIs</a>参照）ところであればどこでも適用される。
+一般的に、通常の<abbr title="Internationalized Resource Identifier">IRI</abbr>拡張ルールは<abbr title="Internationalized Resource Identifier">IRI</abbr>として予想される(<a class="sectionRef sec-ref" href="#iris">5.2 IRI</a>節 参照）ところであればどこでも適用される。
 
 <a class="tref internalDFN" title="context" href="#dfn-context">コンテキスト</a>定義内では、コンテキスト内で定義された用語は循環依存がない限りコンテキスト内で使用できることを意味する。
 
@@ -2146,7 +2146,7 @@ JSON-LDではさまざまな方法で可能である。
 </div>
 <p>
 
-The only exception for using terms in the <a class="tref internalDFN" title="context" href="#dfn-context">コンテキスト</a>内で用語使用するときの唯一の例外は循環定義が許されていないことでである。
+<a class="tref internalDFN" title="context" href="#dfn-context">コンテキスト</a>内で用語使用するときの唯一の例外は循環定義が許されていないことでである。
 
 すなわち、 <em>term2</em>が<em>term1</em>に依存している場合は<em>term1</em>の定義は<em>term2</em>の定義に依存することはできない。
 例えば、次の<a class="tref internalDFN" title="context" href="#dfn-context">コンテキスト</a>定義は不正である。</p>
@@ -2299,7 +2299,7 @@ JSON-LDでは、リストは次のように<code>@list</code><a class="tref inte
 <div class="note">
 <div class="note-title" aria-level="3" role="heading" id="h_note_8"><span>注</span></div>
 <p class="">
-<a class="tref internalDFN" title="list-object" href="#dfn-list-object">listオブジェクト</a>形式のリストのリストは現在のバージョンのJSON-LDでは許されていない。
+<a class="tref internalDFN" title="list-object" href="#dfn-list-object">リスト・オブジェクト</a>形式のリストのリストは現在のバージョンのJSON-LDでは許されていない。
 この決定はリストのリストを処理するとき複雑さが大量に追加されるためである。
 
 </p>
@@ -3262,7 +3262,7 @@ A <a class="tref internalDFN" title="context-definition" href="#dfn-context-defi
 <a class="tref internalDFN" title="keyword" href="#dfn-keyword">キーワード</a>でないキーの値は<a class="tref internalDFN" title="absolute-iri" href="#dfn-absolute-iri">絶対<abbr title="Internationalized Resource Identifier">IRI</abbr></a>、<a class="tref internalDFN" title="compact-iri" href="#dfn-compact-iri">短縮<abbr title="Internationalized Resource Identifier">IRI</abbr></a>、<a class="tref internalDFN" title="term" href="#dfn-term">用語</a>、<a class="tref internalDFN" title="blank-node-identifier" href="#dfn-blank-node-identifier">空白ノード識別子</a>、<a class="tref internalDFN" title="keyword" href="#dfn-keyword">キーワード</a>、<a class="tref internalDFN" title="null" href="#dfn-null">null</a>、<a class="tref internalDFN" title="expanded-term-definition" href="#dfn-expanded-term-definition">拡張用語定義</a>でなけばならない（<em class="rfc2119" title="MUST">MUST</em>）。
 </p>
 <p>
-<a class="tref internalDFN" title="expanded-term-definition" href="#dfn-expanded-term-definition">拡張用語定義</a>は<a class="tref internalDFN" title="node-object" href="#dfn-node-object">ノード・オブジェクト</a>中にキーとして使用されるとき<a class="tref internalDFN" title="term" href="#dfn-term">用語</a>に関連づける値の他のプロパティと同様に、<a class="tref internalDFN" title="term" href="#dfn-term">用語</a>と拡張された識別子間をマッピングを記述するために使用される。。
+<a class="tref internalDFN" title="expanded-term-definition" href="#dfn-expanded-term-definition">拡張用語定義</a>は<a class="tref internalDFN" title="node-object" href="#dfn-node-object">ノード・オブジェクト</a>中にキーとして使用されるとき<a class="tref internalDFN" title="term" href="#dfn-term">用語</a>に関連づける値の他のプロパティと同様に、<a class="tref internalDFN" title="term" href="#dfn-term">用語</a>と拡張された識別子間をマッピングを記述するために使用される。
 </p>
 <p>
 <a class="tref internalDFN" title="expanded-term-definition" href="#dfn-expanded-term-definition">拡張用語定義</a>は<code>@id</code>、<code>@reverse</code>、<code>@type</code>、<code>@language</code>、<code>@container</code>から0以上のキーで構成された<a class="tref internalDFN" title="json-object" href="#dfn-json-object">JSONオブジェクト</a>でなければならない（<em class="rfc2119" title="MUST">MUST</em>）。
