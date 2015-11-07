@@ -636,7 +636,7 @@ JSONが提供するすべての機能に加えてJSON-LDは以下の機能を導
 <a class="tref internalDFN" title="iri" href="#dfn-iri">IRI</a>を利用した<a class="tref internalDFN" title="json-object" href="#dfn-json-object">JSONオブジェクト</a>用のユニバーサル識別子メカニズム</li>
 <li>
 
-異なる文書間で共有されるキーを、<a class="tref internalDFN" title="context" href="#dfn-context">コンテキスト </a>を介して<a class="tref internalDFN" title="iri" href="#dfn-iri">IRI</a> にマッピングすることによって区別する方法
+異なる文書間で共有されるキーを、<a class="tref internalDFN" title="context" href="#dfn-context">コンテキスト</a>を介して<a class="tref internalDFN" title="iri" href="#dfn-iri">IRI</a> にマッピングすることによって区別する方法
 </li>
 <li>
 <a class="tref internalDFN" title="json-object" href="#dfn-json-object">JSONオブジェクト</a>の値が、Web上の異なるサイトの<a class="tref internalDFN" title="json-object" href="#dfn-json-object">JSONオブジェクト</a>を参照できるようにするメカニズム             </li>
@@ -647,11 +647,11 @@ JSONが提供するすべての機能に加えてJSON-LDは以下の機能を導
 </li>
 </ul>
 <p>
-JSON-LDはRDF[<cite><a class="bibref" href="#bib-RDF11-CONCEPTS">RDF11-CONCEPTS</a></cite>]の知識がなくてもとりあえずJSONとして使用できるように設計されている。また必要に応じてSPARQLのようなリンク・データデータ技術と一緒に使用するためにRDFとして使用できるようにも設計されている。
+JSON-LDはRDF[<cite><a class="bibref" href="#bib-RDF11-CONCEPTS">RDF11-CONCEPTS</a></cite>]の知識がなくてもそのままJSONとして使用できるように設計されている。また必要に応じてSPARQLのようなリンク・データデータ技術と一緒に使用するためにRDFとして使用できるようにも設計されている。
 以上の機能が必要かもしくはJSONベースの構文中にRDFグラフやRDFデータ・セットをシリアル化する必要がある開発者はJSON-LDに興味を持つだろう。RDFツールとともにJSON-LDを使用することを意図している方は、例えばTurtle[<cite><a class="bibref" href="#bib-TURTLE">TURTLE</a></cite>]のような別のRDF構文としてJSON-LDを使用可能であることがわかるだろう。JSON-LDがどのようにRDFと関連するのかの完全な詳細は「<a href="#relationship-to-rdf" class="sec-ref"><span class="secno">9.</span> <span class="sec-title">RDFとの関係</span></a>」節にある.
 </p>
 <p>
-構文は既にJSONを使用して稼働しているシステムを妨げず、JSONからJSON-LDへスムースにアップグレードするためのパスを提供するように設計されている。そのようなデータの形状は大きく異なるので、JSON-LDはその処理を簡素化し確定的構造にドキュメントを再生成するメカニズムを備えている。
+構文は既にJSONを使用して稼働しているシステムを妨げず、JSONからJSON-LDへスムースにアップグレードするためのパスを提供するように設計されている。そのようなデータの形状は大きく異なるので、JSON-LDはドキュメントを再形成し、処理しやすい確定的構造にするメカニズムを備えている。
 </p>
 <section class="informative" id="how-to-read-this-document">
 <h3 aria-level="2" role="heading" id="h3_how-to-read-this-document"><span class="secno">1.1 </span>この文書の読み方</h3>
@@ -663,7 +663,7 @@ JSON-LDはRDF[<cite><a class="bibref" href="#bib-RDF11-CONCEPTS">RDF11-CONCEPTS<
 <li>
 JSONを使用できるさまざなプログラム言語中でリンク・データをエンコードしたいソフトウェア開発者
 </li>
-<li>JSONから既存のJSON-LDにコンバートしたいソフトウェア開発者</li>
+<li>既存のJSONをJSON-LDに転換したいソフトウェア開発者</li>
 <li>
 JSON-LDの設計方針と言語構文を理解したいソフトウェア開発者
 </li>
@@ -680,14 +680,15 @@ JSON構文でリンク・データ・RDFグラフ・RDFデータセットを生�
 共通のJSON-LD操作のための標準ライブラリインターフェースを提供することで高レベルなJSON-LDの扱い方を説明している。
 </p>
 <p>
-この仕様の基本を理解するためにはまず.JSONに精通していなければならない。JSONは[<cite><a class="bibref" href="#bib-RFC4627">RFC4627</a></cite>]に詳細がある。
+この仕様の基本を理解するためにはまずJSONに精通していなければならない。JSONは[<cite><a class="bibref" href="#bib-RFC4627">RFC4627</a></cite>]に詳細がある。
 </p>
 <p>
-この文書はハイパーリンクを論じる場合<abbr title="Internationalized Resource Identifier">IRI</abbr>(
-<a href="http://www.w3.org/TR/ld-glossary/#internationalized-resource-identifier">Internationalized Resource Indicator</a>)のみを使用する。
-たいていのWeb開発者はURL(
-<a href="http://www.w3.org/TR/ld-glossary/#uniform-resource-locator">Uniform Resource Locator</a>)に馴染みがある。文書はほとんど稀ではあるがURI(
-<a href="http://www.w3.org/TR/ld-glossary/#uniform-resource-identifier">Uniform Resource Indicator</a>)を使用する。これらの用語はしばしば技術コミュニティ間で交換可能な方法で使用される間はお互いを区別することが重要であり、仕様はいつでも正確な用語の使用を試みることに労力を厭わない。
+この文書はハイパーリンクを論じる場合用語として、ほぼ<abbr title="Internationalized Resource Identifier">IRI</abbr>
+(<a href="http://www.w3.org/TR/ld-glossary/#internationalized-resource-identifier">Internationalized Resource Indicator</a>)のみを使用する。
+たいていのWeb開発者はURL
+(<a href="http://www.w3.org/TR/ld-glossary/#uniform-resource-locator">Uniform Resource Locator</a>)に馴染みがある。この文書はほとんど稀ではあるがURI
+(<a href="http://www.w3.org/TR/ld-glossary/#uniform-resource-identifier">Uniform Resource Indicator</a>)を使用する。これらの用語はしばしば技術コミュニティー間で区別されずに使われるが、各用語間には実に重要な差異があるから、この仕様書ではすべての場合において適切な用語を使おうという労を惜しまない。
+
 </p>
 </section>
 </section>
@@ -697,11 +698,10 @@ JSON構文でリンク・データ・RDFグラフ・RDFデータセットを生�
 <p><em>この節は非規範的である。</em></p>
 <p>JSON-LDは次の設計目標を満たしている。:</p>
 <dl>
-<dt>簡素</dt>
+<dt>簡素さ</dt>
 <dd>
 基本的にJSON-LDを使用するために特別な処理プログラムやソフトウェア・ライブラリを必要としない。
-非常に容易な学習曲線を言語は開発者に提供する。JSONとJSON-LD中の基本的な機能を使用するためには開発者は2つの<a class="tref internalDFN" title="keyword" href="#dfn-keyword">キーワード</a>(<code>@context</code>
-and <code>@id</code>) を知る必要があるのみである。
+この言語は非常に容易な学習曲線を開発者に提供する。JSONとJSON-LD中の基本的な機能を使用するためには開発者は2つの<a class="tref internalDFN" title="keyword" href="#dfn-keyword">キーワード</a>(<code>@context</code>と<code>@id</code>) だけ知れば十分である。
 </dd>
 <dt>互換性</dt>
 <dd>
@@ -713,19 +713,19 @@ JSON-LDは常に有効なJSON文書である。これはすべての標準的な
 </dd>
 <dt>簡潔さ</dt>
 <dd>
-JSON-LD構文は開発者から可能な限り負担を減らすため、とても簡潔で人が可読可能となっている。
+JSON-LD構文は開発者から可能な限り負担を減らすため、とても簡潔で人にとって読みやすい。
 </dd>
 <dt>ほとんどの場合において修正不要</dt>
 <dd>
 JSON-LDは、既存のJSONベースのシステムからのスムーズかつシンプルな移行を保証する。
 多くの場合、JSONドキュメントは修正不要でHTTPレスポンスへ一行の追加で事足りる(「<a class="sectionRef sec-ref" href="#interpreting-json-as-json-ld"> 6.8 JSON-LDとしてJSONを解釈する</a>」節参照)。
-これは巨大なJSONベースのインフラすでに展開してい組織が、日々のオペレーションを混乱させることなくかつ利用者に透過的にJSON-LDの機能を利用可能にする。
+これは巨大なJSONベースのインフラをすでに展開している組織が、日々のオペレーションを支障をきたすことなく組織の今の顧客にとって分かりやすい方法で、JSON-LDの機能を利用可能にする。
 しかしながら、JSONをグラフ表現にマッピングするのは複雑な作業になることもある。
-これらの場合、複雑なユースケースをサポートするためにJSON-LDを拡張するのではなく、ユースケースをサポートしないことを選択する。無編集が設計目標であるが、言語に複雑さを追加することなしにはそれらは不可能であるためである。JSON-LDは可能な限りシンプルさに焦点を当てている。
+これらの場合、複雑なユースケースをサポートするためにJSON-LDを拡張するのではなく、ユースケースをサポートしないことを選択する。修正不要であることは設計目標のひとつではあるが、言語に多大な複雑さを追加することなしに目標を達成できないことがあるためである。JSON-LDは可能な限り簡素さに焦点を当てている。
 </dd>
 <dt>RDFとしての利用</dt>
 <dd>
-<p>JSON-LDはRDF[<cite><a class="bibref" href="#bib-RDF11-CONCEPTS">RDF11-CONCEPTS</a></cite>]を理解することなしに慣用JSONとして開発者によって利用可能である。JSON-LDはRDFとして利用可能であり、RDFツールともにJSON-LDの利用を意図している人は他のRDF文法のように使えることがわかるだろう。どのようにJSON-LDがRDFと関係しているか完全な詳細は「<a href="#relationship-to-rdf" class="sec-ref"><span class="secno">9.</span> <span class="sec-title">RDFとの関係</span></a>」節にある。</p>
+<p>JSON-LDはRDF[<cite><a class="bibref" href="#bib-RDF11-CONCEPTS">RDF11-CONCEPTS</a></cite>]を理解することなしに、慣用してきたJSONとして開発者によって利用可能である。また、JSON-LDはRDFとしても利用可能であり、RDFツールとともにJSON-LDを使おうとしている人は、他のRDF構文と同じように使えることがわかるだろう。JSON-LDがRDFとどのように関係しているかの完全な詳細は「<a href="#relationship-to-rdf" class="sec-ref"><span class="secno">9.</span> <span class="sec-title">RDFとの関係</span></a>」節にある。</p>
 </dd>
 </dl>
 </section>
@@ -743,7 +743,7 @@ JSON-LDは、既存のJSONベースのシステムからのスムーズかつシ
 <dl>
 <dt><dfn title="json-object" id="dfn-json-object">JSONオブジェクト</dfn></dt>
 <dd>
-オブジェクト構造は、ゼロ以上のキーと値のペアを囲む中括弧の対として表される。 キーは<a class="tref internalDFN" title="string" href="#dfn-string">文字列</a>である 。単一のコロンが値とキーを分離するためにキーの後に続く。 単一のコンマは、続くキーから値を分離する。JSONとは対照的にJSON-LDではオブジェクトのキーは一意である必要がある。
+オブジェクト構造は、ゼロペア以上のキー・値ペアを囲む中括弧の対として表される。 キーは<a class="tref internalDFN" title="string" href="#dfn-string">文字列</a>である 。単一のコロンが値とキーを分離するためにキーの後に続く。 単一のコンマは、続くキーから値を分離する。JSONとは対照的にJSON-LDではオブジェクトのキーは一意である必要がある。
 </dd>
 <dt><dfn title="array" id="dfn-array">配列</dfn></dt>
 <dd>
